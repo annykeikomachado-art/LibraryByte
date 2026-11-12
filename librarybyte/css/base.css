@@ -1,0 +1,176 @@
+:root {
+  /* cores */
+  --azul-escuro: #1e3a8a;
+  --azul: #2563eb;
+  --azul-hover: #1e40af;
+  --azul-claro: #4691e8;
+  --fundo-conteudo: #1d70c3c0;
+  --branco: #ffffff;
+  --cinza-borda: #cbd5e1;
+  --cinza-texto: #94a3b8;
+
+
+  --fonte: 'Noto Sans', Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte);
+}
+
+#acesso {
+  position: fixed;
+  z-index: 10;
+  right: 20px;
+  bottom: 20px;
+}
+
+#abrir {
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--branco);
+  border-radius: 50%;
+  background: var(--azul-escuro);
+  color: var(--branco);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 5px 18px rgb(3 25 38 / 25%);
+}
+
+#painel:not([hidden]) {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 12px);
+  width: min(90vw, 360px);
+  max-height: min(70vh, 520px);
+  overflow-y: auto;
+  padding: 20px;
+  border: 1px solid var(--azul);
+  border-radius: 16px;
+  background: var(--branco);
+  box-shadow: 0 12px 36px rgb(3 25 38 / 20%);
+}
+
+#painel[hidden] {
+  display: none;
+}
+
+#painel h2 {
+  margin: 0 0 16px;
+}
+
+#painel [role="group"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#painel [role="group"] span {
+  flex-basis: 100%;
+  font-weight: 700;
+}
+
+#painel button {
+  padding: 7px 10px;
+  border: 1px solid var(--azul-escuro);
+  border-radius: 8px;
+  background: var(--branco);
+  color: var(--azul-escuro);
+  cursor: pointer;
+  font: inherit;
+}
+
+#abrir:focus-visible,
+#painel button:focus-visible {
+  outline: 3px solid var(--azul-claro);
+  outline-offset: 3px;
+}
+
+#painel button:hover {
+  background: var(--azul-claro);
+}
+
+#painel .a11y-reset {
+  margin-top: 4px;
+  background: var(--azul-escuro);
+  color: var(--branco);
+}
+
+#acesso svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+html.alto-contraste body,
+html.alto-contraste header,
+html.alto-contraste footer,
+html.alto-contraste .conceito,
+html.alto-contraste .principio,
+html.alto-contraste .estatistica,
+html.alto-contraste .container,
+html.alto-contraste .sidebar,
+html.alto-contraste .content,
+html.alto-contraste .book-card,
+html.alto-contraste .livro-detalhe,
+html.alto-contraste .card-login,
+html.alto-contraste #painel,
+html.alto-contraste button,
+html.alto-contraste input,
+html.alto-contraste select {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+html.alto-contraste a,
+html.alto-contraste .estatistica strong,
+html.alto-contraste .principio h3,
+html.alto-contraste .destaque-chamada {
+  color: #ffff00;
+}
+
+html.escala-cinza {
+  filter: grayscale(100%);
+}
+
+html.fonte-legivel body,
+html.fonte-legivel button {
+  font-family: Verdana, Arial, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+html.destacar-links a {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  background: #ffff99;
+  color: #000;
+}
+
+html.espacamento body {
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+  word-spacing: 0.15em;
+}
+
+html.dalt-protanopia {
+  filter: url(#filtro-protanopia);
+}
+
+html.dalt-deuteranopia {
+  filter: url(#filtro-deuteranopia);
+}
+
+html.dalt-tritanopia {
+  filter: url(#filtro-tritanopia);
+}

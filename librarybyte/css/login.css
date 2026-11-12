@@ -1,0 +1,159 @@
+
+.main-login {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--azul-escuro), var(--azul));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.left-login {
+  width: 60vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.left-login > h1 {
+  font-size: 3.5vw;
+  color: var(--branco);
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.left-login-image {
+  width: 40vw;
+}
+
+.right-login {
+  width: 40vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-login {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 35px;
+  background: var(--branco);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-login > h1 {
+  color: var(--azul-escuro);
+  font-weight: 800;
+  margin: 0 0 25px 0;
+}
+
+.textfield {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.textfield > label {
+  color: var(--azul-escuro);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.textfield > input,
+.textfield > select {
+  width: 100%;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 12pt;
+  outline: none;
+  transition: 0.2s;
+}
+
+.textfield > input:focus,
+.textfield > select:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 2px #2563eb33;
+}
+
+.textfield > input::placeholder {
+  color: var(--cinza-texto);
+}
+
+.btn-login {
+  width: 100%;
+  padding: 15px;
+  margin: 30px 0 0 0;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--branco);
+  background: var(--azul);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background: var(--azul-hover);
+  transform: translateY(-2px);
+}
+
+
+@media only screen and (max-width: 950px) {
+  .card-login {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-login {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+  }
+
+  .left-login > h1 {
+    display: none;
+  }
+
+  .left-login,
+  .right-login {
+    width: 100%;
+    height: auto;
+  }
+
+  .left-login-image {
+    width: 50vw;
+  }
+
+  .card-login {
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+
+/* mensagens de erro/sucesso dos formulários */
+.form-msg {
+  min-height: 1.2em;
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+  color: #b00020;
+  text-align: center;
+}
+.form-msg-ok {
+  color: #1b6e2d;
+}

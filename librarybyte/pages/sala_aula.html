@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LibraryByte - Sala de aula</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="../css/sala-aula.css" />
+</head>
+<body>
+  <div class="classroom-page">
+    <header class="site-header">
+      <a class="site-brand" href="dashboard.html">LibraryByte</a>
+      <nav class="site-navigation" aria-label="Navegação principal">
+        <a href="dashboard.html">Início</a>
+          <a href="area_estudo.html">Áreas de Estudo</a>
+          <a href="area_livros.html">Livros</a>
+        <a href="sala_aula.html" aria-current="page">Sala de aula</a>
+        <a href="dashboard.html">Documentos</a>
+        <a href="favoritos.html">Favoritos</a>
+      </nav>
+    </header>
+    <main class="content classroom-content">
+      <header class="classroom-heading">
+        <div>
+          <p class="eyebrow">APRENDER EM CONJUNTO</p>
+          <h1>Sala de aula</h1>
+          <p>Organize suas turmas ou entre em uma sala com o código do professor.</p>
+        </div>
+        <span class="demo-label"></span>
+      </header>
+
+      <section class="classroom-workspace" aria-labelledby="turmas-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="turmas-title">Suas turmas</h2>
+            <p id="class-count" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <p id="classroom-message" class="classroom-message" role="status" aria-live="polite"></p>
+
+        <div class="classroom-layout">
+          <section class="class-list-panel" aria-label="Lista de turmas">
+            <div id="class-list" class="class-list"></div>
+          </section>
+
+          <aside class="class-action-panel">
+            <form id="join-class-form" class="action-card">
+              <span class="action-icon" aria-hidden="true">+</span>
+              <h3>Entrar em uma turma</h3>
+              <p>Peça o código de acesso ao seu professor para participar da sala.</p>
+              <label for="join-code">Código da turma</label>
+              <input id="join-code" name="code" type="text" maxlength="10" autocomplete="off" placeholder="Ex.: ABC123" required />
+              <button class="primary-button" type="submit">Entrar na turma</button>
+            </form>
+
+            <form id="create-class-form" class="action-card" hidden>
+              <span class="action-icon" aria-hidden="true">+</span>
+              <h3>Criar uma turma</h3>
+              <p>Crie uma sala e compartilhe o código de acesso com seus alunos.</p>
+              <label for="class-name">Nome da turma</label>
+              <input id="class-name" name="className" type="text" maxlength="100" placeholder="Ex.: Literatura Brasileira" required />
+              <label for="class-semester">Semestre</label>
+              <input id="class-semester" name="semester" type="text" maxlength="10" placeholder="Ex.: 2026.1" required />
+              <button class="primary-button" type="submit">Criar turma</button>
+            </form>
+          </aside>
+        </div>
+
+        <section id="class-details" class="class-details" aria-live="polite" hidden></section>
+      </section>
+    </main>
+  </div>
+
+  <div id="acesso">
+    <button id="abrir" type="button" aria-expanded="false" aria-controls="painel"
+      aria-label="Abrir painel de acessibilidade">A+</button>
+    <section id="painel" role="dialog" aria-labelledby="titulo" hidden>
+      <h2 id="titulo">Acessibilidade</h2>
+      <div role="group" aria-label="Tamanho do texto">
+        <span>Tamanho do texto</span>
+        <button type="button" data-acao="fonte-menos" aria-label="Diminuir texto">A−</button>
+        <button type="button" data-acao="fonte-mais" aria-label="Aumentar texto">A+</button>
+      </div>
+      <div role="group" aria-label="Opções visuais">
+        <button type="button" data-toggle="alto-contraste" aria-pressed="false">Alto contraste</button>
+        <button type="button" data-toggle="escala-cinza" aria-pressed="false">Tons de cinza</button>
+        <button type="button" data-toggle="fonte-legivel" aria-pressed="false">Fonte legível</button>
+        <button type="button" data-toggle="destacar-links" aria-pressed="false">Destacar links</button>
+        <button type="button" data-toggle="espacamento" aria-pressed="false">Mais espaçamento</button>
+        <button type="button" data-acao="daltonismo" aria-pressed="false">Modo daltônico: desligado</button>
+      </div>
+      <button type="button" class="a11y-reset" data-acao="reset" aria-live="polite">Restaurar padrão</button>
+    </section>
+    <svg aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="filtro-protanopia"><feColorMatrix type="matrix" values="0.567 0.433 0 0 0 0.558 0.442 0 0 0 0 0.242 0.758 0 0 0 0 0 1 0"/></filter>
+        <filter id="filtro-deuteranopia"><feColorMatrix type="matrix" values="0.625 0.375 0 0 0 0.7 0.3 0 0 0 0 0.3 0.7 0 0 0 0 0 1 0"/></filter>
+        <filter id="filtro-tritanopia"><feColorMatrix type="matrix" values="0.95 0.05 0 0 0 0 0.433 0.567 0 0 0 0.475 0.525 0 0 0 0 0 1 0"/></filter>
+      </defs>
+    </svg>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/site-navigation.js"></script>
+  <script src="../js/sala-aula.js"></script>
+  <script src="../js/acessibilidade.js"></script>
+</body>
+</html>

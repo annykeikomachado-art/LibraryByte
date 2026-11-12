@@ -1,0 +1,143 @@
+.study-content {
+  min-width: 0;
+}
+
+.study-heading {
+  margin-bottom: 28px;
+  color: var(--branco);
+}
+
+.study-heading h1 {
+  margin: 0 0 8px;
+}
+
+.study-heading p {
+  margin: 0 0 12px;
+}
+
+.study-history {
+  max-width: 900px;
+  padding: clamp(20px, 4vw, 32px);
+  border-radius: 18px;
+  background: var(--branco);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.reading-history {
+  margin-top: 24px;
+}
+
+.history-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.history-heading h2 {
+  margin: 0 0 6px;
+  color: var(--azul-escuro);
+}
+
+.history-heading p {
+  margin: 0;
+  color: #475569;
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.history-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 10px;
+}
+
+.history-search {
+  color: var(--azul-escuro);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.history-book {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.history-date {
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.history-open,
+.history-clear {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--azul);
+  color: var(--branco);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.history-open:hover,
+.history-clear:hover {
+  background: var(--azul-escuro);
+}
+
+.history-empty {
+  margin: 20px 0 0;
+  color: #475569;
+}
+
+@media (max-width: 700px) {
+  .container {
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .sidebar h2 {
+    margin: 0 0 12px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin: 0;
+  }
+
+  .sidebar li {
+    margin: 4px 0;
+  }
+
+  .study-content {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-heading,
+  .history-list li {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

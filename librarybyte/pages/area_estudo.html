@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LibraryByte - Áreas de Estudo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/dashboard.css" />
+  <link rel="stylesheet" href="../css/area_estudo.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-brand" href="dashboard.html">LibraryByte</a>
+    <nav class="site-navigation" aria-label="Navegação principal">
+      <a href="dashboard.html">Início</a>
+      <a href="area_estudo.html" aria-current="page">Áreas de Estudo</a>
+      <a href="area_livros.html">Livros</a>
+      <a href="sala_aula.html">Sala de aula</a>
+      <a href="dashboard.html">Documentos</a>
+      <a href="favoritos.html">Favoritos</a>
+    </nav>
+  </header>
+
+  <main class="content study-content">
+      <header class="study-heading">
+        <h1>Áreas de Estudo</h1>
+        <p>Consulte suas buscas recentes ou explore a biblioteca.</p>
+        <a class="welcome-link" href="area_livros.html">Explorar livros</a>
+      </header>
+
+      <section class="study-history" aria-labelledby="history-title">
+        <div class="history-heading">
+          <div>
+            <h2 id="history-title">Histórico de buscas</h2>
+            <p>Suas pesquisas mais recentes aparecem primeiro.</p>
+          </div>
+          <button id="limpar-historico" class="history-clear" type="button" hidden>
+            Limpar histórico
+          </button>
+        </div>
+        <ul id="historico-lista" class="history-list" aria-live="polite"></ul>
+      </section>
+
+      <section class="study-history reading-history" aria-labelledby="reading-history-title">
+        <div class="history-heading">
+          <div>
+            <h2 id="reading-history-title">Histórico de leitura</h2>
+            <p>Livros que você abriu recentemente.</p>
+          </div>
+          <button id="limpar-historico-leitura" class="history-clear" type="button" hidden>
+            Limpar histórico
+          </button>
+        </div>
+        <ul id="historico-leitura-lista" class="history-list" aria-live="polite"></ul>
+      </section>
+  </main>
+
+  <div id="acesso">
+    <button id="abrir" type="button" aria-expanded="false" aria-controls="painel"
+      aria-label="Abrir painel de acessibilidade">A+</button>
+
+    <section id="painel" role="dialog" aria-labelledby="titulo" hidden>
+      <h2 id="titulo">Acessibilidade</h2>
+      <div role="group" aria-label="Tamanho do texto">
+        <span>Tamanho do texto</span>
+        <button type="button" data-acao="fonte-menos" aria-label="Diminuir texto">A−</button>
+        <button type="button" data-acao="fonte-mais" aria-label="Aumentar texto">A+</button>
+      </div>
+      <div role="group" aria-label="Opções visuais">
+        <button type="button" data-toggle="alto-contraste" aria-pressed="false">Alto contraste</button>
+        <button type="button" data-toggle="escala-cinza" aria-pressed="false">Tons de cinza</button>
+        <button type="button" data-toggle="fonte-legivel" aria-pressed="false">Fonte legível</button>
+        <button type="button" data-toggle="destacar-links" aria-pressed="false">Destacar links</button>
+        <button type="button" data-toggle="espacamento" aria-pressed="false">Mais espaçamento</button>
+        <button type="button" data-acao="daltonismo" aria-pressed="false">Modo daltônico: desligado</button>
+      </div>
+      <button type="button" class="a11y-reset" data-acao="reset" aria-live="polite">Restaurar padrão</button>
+    </section>
+
+    <svg aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="filtro-protanopia">
+          <feColorMatrix type="matrix" values="0.567 0.433 0 0 0 0.558 0.442 0 0 0 0 0.242 0.758 0 0 0 0 0 1 0"/>
+        </filter>
+        <filter id="filtro-deuteranopia">
+          <feColorMatrix type="matrix" values="0.625 0.375 0 0 0 0.7 0.3 0 0 0 0 0.3 0.7 0 0 0 0 0 1 0"/>
+        </filter>
+        <filter id="filtro-tritanopia">
+          <feColorMatrix type="matrix" values="0.95 0.05 0 0 0 0 0.433 0.567 0 0 0 0.475 0.525 0 0 0 0 0 1 0"/>
+        </filter>
+      </defs>
+    </svg>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/site-navigation.js"></script>
+  <script src="../js/livros-data.js"></script>
+  <script src="../js/area_estudo-page.js"></script>
+  <script src="../js/acessibilidade.js"></script>
+</body>
+</html>

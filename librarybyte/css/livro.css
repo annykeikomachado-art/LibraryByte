@@ -1,0 +1,195 @@
+.voltar {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--branco);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.voltar:hover {
+  text-decoration: underline;
+}
+
+.livro-pagina {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 44px;
+  width: 100%;
+  max-width: 1390px;
+  margin: 0 auto;
+}
+
+.livro-capa {
+  flex: 0 0 auto;
+  width: clamp(240px, 24vw, 340px);
+  margin: 0;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.livro-capa[hidden] {
+  display: none;
+}
+
+.livro-capa img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.livro-capa.sem-imagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 3 / 4;
+  padding: 30px;
+  background: linear-gradient(160deg, var(--azul-escuro), var(--azul));
+  color: var(--branco);
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+}
+
+/* Saltinho ao passar o cursor sobre a capa */
+.livro-capa:hover {
+  animation: capa-salto 1.4s ease-in-out;
+}
+
+@keyframes capa-salto {
+  0%   { transform: translateY(0); }
+  40%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .livro-capa:hover {
+    animation: none;
+  }
+}
+
+.livro-detalhe {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 920px;
+  padding: 30px;
+  background: var(--branco);
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.livro-detalhe h1 {
+  margin: 0 0 20px;
+  color: var(--azul-escuro);
+  font-size: 2rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.livro-detalhe h2 {
+  margin: 25px 0 10px;
+  color: var(--azul-escuro);
+  font-size: 1.2rem;
+}
+
+.livro-infos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--cinza-borda);
+}
+
+.livro-infos dt {
+  color: var(--cinza-texto);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.livro-infos dd {
+  margin: 4px 0 0;
+  font-weight: 600;
+}
+
+.livro-resumo {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Botão para adicionar o livro aos favoritos */
+.botao-favoritos {
+  display: block;
+  min-width: 245px;
+  margin: 28px auto 0;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--azul);
+  color: var(--branco);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.botao-favoritos:hover {
+  background: var(--azul-escuro);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18);
+}
+
+.botao-favoritos.favorito-adicionado {
+  background: var(--azul-escuro);
+}
+
+.botao-favoritos:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 3px;
+}
+
+/* Mensagem de confirmação ao adicionar aos favoritos */
+.mensagem-favoritos {
+  min-height: 24px;
+  margin: 12px 0 0;
+  color: var(--azul-escuro);
+  font-weight: 600;
+  text-align: center;
+}
+
+
+@media (max-width: 900px) {
+  .livro-pagina {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .livro-capa {
+    width: min(100%, 280px);
+  }
+
+  .livro-detalhe {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .livro-detalhe {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .livro-detalhe h1 {
+    font-size: 1.5rem;
+  }
+
+  .livro-infos {
+    flex-direction: column;
+  }
+}

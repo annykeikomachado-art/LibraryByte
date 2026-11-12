@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LibraryByte - Login</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="main-login">
+    <div class="left-login">
+      <h1>Faça login <br /> e entre na LibraryByte</h1>
+      <img src="assets/img/livro.svg" class="left-login-image" alt="Ilustração de um livro" />
+    </div>
+
+    <div class="right-login">
+
+      <div class="card-login" id="login-card">
+        <h1>LOGIN</h1>
+        <div class="textfield">
+          <label for="usuario">E-mail</label>
+          <input type="email" id="usuario" name="usuario" placeholder="E-mail institucional" autocomplete="username" />
+        </div>
+        <div class="textfield">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="Senha" autocomplete="current-password" />
+        </div>
+        <div class="textfield">
+          <label for="tipo-usuario">Entrar como</label>
+          <select id="tipo-usuario" name="tipo-usuario">
+            <option value="student">Aluno</option>
+            <option value="teacher">Professor</option>
+          </select>
+        </div>
+        <p class="form-msg" id="msg-login" role="alert"></p>
+        <button class="btn-login" id="login-btn">Login</button>
+        <p>Não tem conta? <a href="#" id="show-register">Registrar</a></p>
+      </div>
+
+      <div class="card-login" id="register-card" style="display: none;">
+        <h1>REGISTRO</h1>
+        <div class="textfield">
+          <label for="tipo-registro">Sou</label>
+          <select id="tipo-registro" name="tipo-registro">
+            <option value="aluno">Aluno</option>
+            <option value="professor">Professor</option>
+          </select>
+        </div>
+        <div class="textfield">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Nome" />
+        </div>
+        <div class="textfield">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="E-mail institucional" autocomplete="email" />
+        </div>
+        <div class="textfield" id="campo-nascimento">
+          <label for="nascimento">Data de nascimento</label>
+          <input type="date" id="nascimento" name="nascimento" />
+        </div>
+        <div class="textfield">
+          <label for="senha-registro">Senha</label>
+          <input type="password" id="senha-registro" name="senha-registro" placeholder="Mínimo 8 caracteres, com letras e números" autocomplete="new-password" />
+        </div>
+        <p class="form-msg" id="msg-registro" role="alert"></p>
+        <button class="btn-login" id="register-btn">Registrar</button>
+        <p>Já tem conta? <a href="#" id="show-login">Voltar ao Login</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+
+  
+<div id="acesso">
+        <button id="abrir" type="button" aria-expanded="false" aria-controls="painel"
+          aria-label="Abrir painel de acessibilidade"> A+
+        </button>
+
+        <section id="painel" role="dialog" aria-labelledby="titulo" hidden>
+            <h2 id="titulo">Acessibilidade</h2>
+
+            <div role="group" aria-label="Tamanho do texto">
+                <span>Tamanho do texto</span>
+                <button type="button" data-acao="fonte-menos" aria-label="Diminuir texto">A−</button>
+                <button type="button" data-acao="fonte-mais" aria-label="Aumentar texto">A+</button>
+
+            </div>
+            <div role="group" aria-label="Opções visuais">
+                <button type="button" data-toggle="alto-contraste" aria-pressed="false">Alto contraste</button>
+                <button type="button" data-toggle="escala-cinza" aria-pressed="false">Tons de cinza</button>
+                <button type="button" data-toggle="fonte-legivel" aria-pressed="false">Fonte legível</button>
+                <button type="button" data-toggle="destacar-links" aria-pressed="false">Destacar links</button>
+                <button type="button" data-toggle="espacamento" aria-pressed="false">Mais espaçamento</button>
+                <button type="button" data-acao="daltonismo" aria-pressed="false">Modo daltônico: desligado</button>
+                </div>
+
+            <button type="button" class="a11y-reset" data-acao="reset" aria-live="polite">Restaurar padrão</button>
+         </section>
+
+         <svg aria-hidden="true" focusable="false">
+            <defs>
+                <filter id="filtro-protanopia">
+                    <feColorMatrix type="matrix" values="
+                        0.567 0.433 0     0 0
+                        0.558 0.442 0     0 0
+                        0     0.242 0.758 0 0
+                        0     0     0     1 0"/>
+                </filter>
+                <filter id="filtro-deuteranopia">
+                    <feColorMatrix type="matrix" values="
+                        0.625 0.375 0   0 0
+                        0.7   0.3   0   0 0
+                        0     0.3   0.7 0 0
+                        0     0     0   1 0"/>
+                </filter>
+                <filter id="filtro-tritanopia">
+                    <feColorMatrix type="matrix" values="
+                        0.95 0.05  0     0 0
+                        0    0.433 0.567 0 0
+                        0    0.475 0.525 0 0
+                        0    0     0     1 0"/>
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+  <script src="js/acessibilidade.js"></script>
+</body>
+</html>

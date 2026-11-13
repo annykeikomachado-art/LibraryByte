@@ -26,16 +26,6 @@ CREATE TABLE g02_autor (
   PRIMARY KEY (id_autor)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE g02_administrador (
-  id_admin INT NOT NULL AUTO_INCREMENT,
-  nome_completo VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL UNIQUE,
-  senha VARCHAR(255) NOT NULL,
-  nivel_permissao VARCHAR(20) NOT NULL DEFAULT 'ADMIN',
-  data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id_admin)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 CREATE TABLE g02_professor (
   id_professor INT NOT NULL AUTO_INCREMENT,
   id_instituicao INT NOT NULL,

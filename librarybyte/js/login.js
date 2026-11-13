@@ -2,9 +2,14 @@ const loginCard = document.getElementById("login-card");
 const registerCard = document.getElementById("register-card");
 const msgLogin = document.getElementById("msg-login");
 const msgRegistro = document.getElementById("msg-registro");
-const tipoRegistro = document.getElementById("tipo-registro");
-const campoNascimento = document.getElementById("campo-nascimento");
 const API = window.LibraryByteAPI;
+
+function perfilPorEmail(email) {
+  const dominio = email.trim().toLowerCase().split("@").pop();
+  if (/^prof(?:\.|$)/.test(dominio)) return "professor";
+  if (/^aluno(?:\.|$)/.test(dominio)) return "aluno";
+  return null;
+}
 
 function mostrarMensagem(el, texto, ok = false) {
   el.textContent = texto;
@@ -14,7 +19,6 @@ function mostrarMensagem(el, texto, ok = false) {
 async function realizarLogin() {
   const email = document.getElementById("usuario").value.trim();
   const senha = document.getElementById("senha").value;
-  const perfil = document.getElementById("tipo-usuario").value;   // student | teacher
 
   if (!email || !senha) {
     mostrarMensagem(msgLogin, "Preencha e-mail e senha antes de continuar.");
@@ -24,12 +28,8 @@ async function realizarLogin() {
   const botao = document.getElementById("login-btn");
   botao.disabled = true;
   try {
-    const resposta = await API.post("login.php", {
-      email,
-      senha,
-      tipo: perfil === "teacher" ? "professor" : "aluno"
-    });
-    localStorage.setItem("librarybyte-user-role", perfil);
+    const resposta = await API.post("login.php", { email, senha });
+    localStorage.setItem("librarybyte-user-role", resposta.tipo === "professor" ? "teacher" : "student");
     localStorage.setItem("librarybyte-user-name", resposta.nome);
     window.location.href = "pages/dashboard.html";
   } catch (erro) {
@@ -43,9 +43,13 @@ async function realizarRegistro() {
   const nome = document.getElementById("nome").value.trim();
   const email = document.getElementById("email").value.trim();
   const senha = document.getElementById("senha-registro").value;
-  const tipo = tipoRegistro.value;
+  const tipo = perfilPorEmail(email);
   const nascimento = document.getElementById("nascimento").value;
 
+  if (!tipo) {
+    mostrarMensagem(msgRegistro, "Use um e-mail cujo domínio comece com prof. ou aluno.");
+    return;
+  }
   if (!nome || !email || !senha || (tipo === "aluno" && !nascimento)) {
     mostrarMensagem(msgRegistro, "Preencha todos os campos.");
     return;
@@ -54,11 +58,10 @@ async function realizarRegistro() {
   const botao = document.getElementById("register-btn");
   botao.disabled = true;
   try {
-    await API.post("registrar.php", { tipo, nome, email, senha, data_nascimento: nascimento });
+    await API.post("registrar.php", { nome, email, senha, data_nascimento: nascimento });
     mostrarLogin();
     document.getElementById("usuario").value = email;
     document.getElementById("senha").value = "";
-    document.getElementById("tipo-usuario").value = tipo === "professor" ? "teacher" : "student";
     mostrarMensagem(msgLogin, "Cadastro realizado! Entre com seu e-mail e senha.", true);
   } catch (erro) {
     mostrarMensagem(msgRegistro, erro.message);
@@ -78,13 +81,8 @@ function mostrarLogin() {
   loginCard.style.display = "flex";
 }
 
-function atualizarCampoNascimento() {
-  campoNascimento.style.display = tipoRegistro.value === "aluno" ? "" : "none";
-}
-
 document.getElementById("login-btn").addEventListener("click", realizarLogin);
 document.getElementById("register-btn").addEventListener("click", realizarRegistro);
-tipoRegistro.addEventListener("change", atualizarCampoNascimento);
 
 ["usuario", "senha"].forEach((id) => {
   document.getElementById(id).addEventListener("keydown", (event) => {
@@ -106,5 +104,3 @@ document.getElementById("show-login").addEventListener("click", (event) => {
   event.preventDefault();
   mostrarLogin();
 });
-
-atualizarCampoNascimento();

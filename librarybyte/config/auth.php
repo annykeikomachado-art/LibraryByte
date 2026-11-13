@@ -55,7 +55,9 @@ function exigir_login(): array
 {
     iniciar_sessao();
     $u = $_SESSION['usuario'] ?? null;
-    if (!is_array($u)) {
+    if (!is_array($u) || !in_array($u['tipo'] ?? '', ['aluno', 'professor'], true)) {
+        $_SESSION = [];
+        session_destroy();
         erro('Você precisa entrar para continuar.', 401);
     }
     return $u;
@@ -63,7 +65,30 @@ function exigir_login(): array
 
 function coluna_dono(array $usuario): string
 {
-    return $usuario['tipo'] === 'professor' ? 'id_professor' : 'id_aluno';
+    if ($usuario['tipo'] === 'professor') {
+        return 'id_professor';
+    }
+    if ($usuario['tipo'] === 'aluno') {
+        return 'id_aluno';
+    }
+    erro('Perfil sem acesso a este recurso.', 403);
+}
+
+function perfil_institucional_por_email(string $email): ?string
+{
+    $separador = strrpos($email, '@');
+    if ($separador === false) {
+        return null;
+    }
+
+    $dominio = strtolower(substr($email, $separador + 1));
+    if (preg_match('/^prof(?:\.|$)/', $dominio) === 1) {
+        return 'professor';
+    }
+    if (preg_match('/^aluno(?:\.|$)/', $dominio) === 1) {
+        return 'aluno';
+    }
+    return null;
 }
 
 function tam(string $s): int

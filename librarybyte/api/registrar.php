@@ -2,15 +2,16 @@
 require_once __DIR__ . '/../config/auth.php';
 
 $d = corpo_json();
-$tipo  = $d['tipo']  ?? '';
 $nome  = trim((string)($d['nome']  ?? ''));
 $email = strtolower(trim((string)($d['email'] ?? '')));
 $senha = (string)($d['senha'] ?? '');
 $nasc  = trim((string)($d['data_nascimento'] ?? ''));
 
-if (!in_array($tipo, ['aluno', 'professor'], true)) erro('Escolha se você é aluno ou professor.');
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) erro('Informe um e-mail institucional válido.');
+$tipo = perfil_institucional_por_email($email);
+if ($tipo === null) erro('Use um e-mail cujo domínio comece com prof. ou aluno.');
 if ($nome === '' || tam($nome) > 100)         erro('Informe seu nome (até 100 caracteres).');
-if (!filter_var($email, FILTER_VALIDATE_EMAIL) || tam($email) > 100) erro('Informe um e-mail válido.');
+if (tam($email) > 100) erro('Informe um e-mail válido.');
 
 if (strlen($senha) < 8 || strlen($senha) > 72 || !preg_match('/[A-Za-z]/', $senha) || !preg_match('/\d/', $senha)) {
     erro('A senha deve ter de 8 a 72 caracteres, com letras e números.');

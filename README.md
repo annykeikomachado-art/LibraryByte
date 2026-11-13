@@ -1,2 +1,2 @@
 # LibraryByte
-LibraryByte é um projeto acadêmico voltado a disponibilidade e acesso de materiais para estudantes de instituições de ensino superior
+LibraryByte é um projeto acadêmico voltado a disponibilidade e acesso de materiais de ensino superior destinado a universitários e professores.

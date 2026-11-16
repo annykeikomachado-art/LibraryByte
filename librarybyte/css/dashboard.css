@@ -6,7 +6,7 @@
   justify-content: flex-start;
   gap: 24px;
   padding: 14px clamp(20px, 5vw, 64px);
-  background: var(--azul-escuro);
+  background: linear-gradient(110deg, #102a63, #1d4ed8 68%, #2563eb);
   color: var(--branco);
   box-shadow: 0 3px 12px rgb(15 23 42 / 18%);
 }
@@ -125,9 +125,44 @@
 
 .content {
   min-height: calc(100vh - 76px);
-  padding: 20px;
+  padding: clamp(20px, 4vw, 48px);
   background: var(--fundo-conteudo);
   overflow-y: auto;
+}
+
+body.home-page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+body.home-page .content {
+  flex: 1;
+  min-height: 0;
+}
+
+.home-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 8px 20px 0;
+  overflow: hidden;
+}
+
+.flower-path {
+  display: flex;
+  width: min(100%, 1200px);
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0;
+}
+
+.flower-path img {
+  display: block;
+  width: clamp(30px, 9vw, 110px);
+  max-height: 110px;
+  object-fit: contain;
+  transform: translateY(8%);
 }
 
 @media (max-width: 760px) {
@@ -153,12 +188,17 @@
 }
 
 .welcome-card {
-  max-width: 760px;
-  margin: 8vh auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+  max-width: 1120px;
+  margin: clamp(24px, 7vh, 80px) auto;
   padding: clamp(24px, 5vw, 48px);
+  border: 1px solid rgb(255 255 255 / 65%);
   border-radius: 20px;
-  background: var(--branco);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #fff 0%, #f8fbff 60%, #dbeafe 100%);
+  box-shadow: 0 18px 45px rgb(7 28 76 / 24%);
 }
 
 .welcome-card h1 {
@@ -167,7 +207,25 @@
 }
 
 .welcome-card p {
+  max-width: 58ch;
+  color: #475569;
   line-height: 1.7;
+}
+
+.welcome-illustration {
+  display: grid;
+  min-height: 280px;
+  place-items: center;
+  border-radius: 18px;
+  background: radial-gradient(circle at center, #fff 0%, #dbeafe 66%, #bfdbfe 100%);
+}
+
+.welcome-illustration img {
+  display: block;
+  width: min(100%, 390px);
+  max-height: 340px;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 18px rgb(15 23 42 / 15%));
 }
 
 .welcome-link {
@@ -179,10 +237,34 @@
   color: var(--branco);
   font-weight: 700;
   text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
 .welcome-link:hover {
   background: var(--azul-escuro);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgb(30 58 138 / 22%);
+}
+
+@media (max-width: 700px) {
+  .welcome-card {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-illustration {
+    min-height: 220px;
+  }
+
+  .welcome-illustration img {
+    max-height: 280px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-link {
+    transition: none;
+  }
 }
 
 .topbar {

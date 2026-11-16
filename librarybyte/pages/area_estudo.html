@@ -21,43 +21,54 @@
       <a href="area_estudo.html" aria-current="page">Áreas de Estudo</a>
       <a href="area_livros.html">Livros</a>
       <a href="sala_aula.html">Sala de aula</a>
-      <a href="dashboard.html">Documentos</a>
       <a href="favoritos.html">Favoritos</a>
     </nav>
   </header>
 
   <main class="content study-content">
       <header class="study-heading">
-        <h1>Áreas de Estudo</h1>
-        <p>Consulte suas buscas recentes ou explore a biblioteca.</p>
-        <a class="welcome-link" href="area_livros.html">Explorar livros</a>
+        <div class="study-heading-copy">
+          <h1>Áreas de Estudo</h1>
+          <p>Consulte suas buscas recentes ou explore a biblioteca.</p>
+          <a class="welcome-link" href="area_livros.html">Explorar livros</a>
+        </div>
+        <img class="study-illustration" src="../assets/img/livro3.svg"
+          alt="Ilustração de uma pessoa lendo em uma biblioteca" />
       </header>
 
-      <section class="study-history" aria-labelledby="history-title">
-        <div class="history-heading">
-          <div>
-            <h2 id="history-title">Histórico de buscas</h2>
-            <p>Suas pesquisas mais recentes aparecem primeiro.</p>
-          </div>
-          <button id="limpar-historico" class="history-clear" type="button" hidden>
-            Limpar histórico
-          </button>
-        </div>
-        <ul id="historico-lista" class="history-list" aria-live="polite"></ul>
-      </section>
+      <div class="study-history-layout">
+        <div class="study-history-stack">
+          <section class="study-history" aria-labelledby="history-title">
+            <div class="history-heading">
+              <div>
+                <h2 id="history-title">Histórico de buscas</h2>
+                <p>Suas pesquisas mais recentes aparecem primeiro.</p>
+              </div>
+              <button id="limpar-historico" class="history-clear" type="button" hidden>
+                Limpar histórico
+              </button>
+            </div>
+            <ul id="historico-lista" class="history-list" aria-live="polite"></ul>
+          </section>
 
-      <section class="study-history reading-history" aria-labelledby="reading-history-title">
-        <div class="history-heading">
-          <div>
-            <h2 id="reading-history-title">Histórico de leitura</h2>
-            <p>Livros que você abriu recentemente.</p>
-          </div>
-          <button id="limpar-historico-leitura" class="history-clear" type="button" hidden>
-            Limpar histórico
-          </button>
+          <section class="study-history reading-history" aria-labelledby="reading-history-title">
+            <div class="history-heading">
+              <div>
+                <h2 id="reading-history-title">Histórico de leitura</h2>
+                <p>Livros que você abriu recentemente.</p>
+              </div>
+              <button id="limpar-historico-leitura" class="history-clear" type="button" hidden>
+                Limpar histórico
+              </button>
+            </div>
+            <ul id="historico-leitura-lista" class="history-list" aria-live="polite"></ul>
+          </section>
         </div>
-        <ul id="historico-leitura-lista" class="history-list" aria-live="polite"></ul>
-      </section>
+
+        <aside class="study-visual-card" aria-label="Ilustração de flores">
+          <img class="study-flower" src="../assets/img/flower.svg" alt="Ilustração de flores" />
+        </aside>
+      </div>
   </main>
 
   <div id="acesso">
